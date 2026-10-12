@@ -3,39 +3,40 @@
 
 import pandas as pd
 
-# ==========================================
-#        Verificar versión de Pandas
-# ==========================================
-print("=== VERIFICACIÓN DE ENTORNO ===")
+# Paso 12: Verificación de versión de Pandas
 print("Versión de Pandas instalada:", pd.__version__)
-print("=" * 40)
+print("=" * 50)
 
-# ==========================================
-#         Caso Práctico en Código
-# ==========================================
-# Datos personalizados del alumno:
-# Número de lista: 10 | Género: Hombre | Número de control: 0030
-
-NUM_LISTA = 10
-GENERO = "Hombre"
-NUM_CONTROL = "0030"
-
-print(f"\n=== CASO PRÁCTICO ML - ALUMNO NO. {NUM_LISTA} ===")
-print(f"Género: {GENERO} | No. Control: {NUM_CONTROL}\n")
-
-# Construcción de un Dataset para Machine Learning
-dataset = {
-    'ID_Cliente': [f"CLI-{NUM_CONTROL}-{i:02d}" for i in range(1, 6)],
-    'Edad': [18 + NUM_LISTA, 25, 30 + NUM_LISTA, 45, 20 + NUM_LISTA],
-    'Monto_Compra_MXN': [1200.50, 3500.00, 890.00, 4200.00, 2100.50],
-    'Frecuencia_Visitas': [2, 6, 1, 9, 4],
-    'Categoria_Target': ['Bajo', 'Alto', 'Bajo', 'Alto', 'Medio']
+# Paso 13: Caso Práctico en Código con tus datos (datos10)
+datos10 = {
+    'distancia_km': [4.1, 2.6, 5.9, 1.7, 3.4],
+    'trafico_nivel': [2, 1, 3, 2, 1],
+    'edad_repartidor': [35, 27, 43, 31, 24],
+    'tiempo_entrega_min': [34, 19, 55, 15, 23]
 }
 
-df = pd.DataFrame(dataset)
+# Creación del DataFrame
+df = pd.DataFrame(datos10)
 
-print("--- Dataframe Creado ---")
+print("--- DATAFRAME DE TIEMPOS DE ENTREGA ---")
 print(df)
+print("\n" + "=" * 50)
 
-print("\n--- Estadísticas Descriptivas ---")
-print(df.describe())
+# Identificación de Componentes de Machine Learning
+print("--- CONCEPTOS FUNDAMENTALES APLICADOS ---")
+
+# 1. Variables de entrada / Características / Features (X)
+X = df[['distancia_km', 'trafico_nivel', 'edad_repartidor']]
+print("\nCaracterísticas (X - Predictoras):")
+print(X)
+
+# 2. Variable de salida / Etiqueta / Target (y)
+y = df['tiempo_entrega_min']
+print("\nEtiqueta u Objetivo (y - Lo que queremos predecir):")
+print(y)
+
+# 3. Observaciones / Instancias (Filas/Registros)
+print(f"\nNúmero total de observaciones (filas): {len(df)}")
+print(f"Dimensiones del dataset (Filas, Columnas): {df.shape}")
+
+print("Programa ejecutado por Cepeda Darrell NC = 0030")
